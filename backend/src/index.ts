@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import userRoutes from './routes/userRoute';
+import roleRoutes from './routes/roleRoutes';
 
 
 const app = express();
@@ -11,7 +12,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/api/users', userRoutes);
-//app.use('/api/roles', roleRoutes);
+app.use('/api/roles', roleRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

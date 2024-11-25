@@ -75,3 +75,41 @@ export const getRoles = async (): Promise<RoleData[]> => {
     throw error;
   }
 };
+export const updateUser = async (id: number, data: Partial<UserData>): Promise<UserData> => {
+  try {
+    const response = await axios.put(`${API_URL}/users/${id}`, data);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating user:", error);
+    throw error;
+  }
+};
+
+export const deleteUser = async (id: number): Promise<void> => {
+  try {
+    await axios.delete(`${API_URL}/users/${id}`);
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    throw error;
+  }
+};
+export const updateRole = async (id: number, roleData: Partial<RoleData>): Promise<RoleData> => {
+  try {
+    const response = await axios.put(`${API_URL}/roles/${id}`, roleData);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating role:", error);
+    throw error;
+  }
+};
+
+// Delete a role
+export const deleteRole = async (id: number): Promise<void> => {
+  try {
+    await axios.delete(`${API_URL}/roles/${id}`);
+  } catch (error) {
+    console.error("Error deleting role:", error);
+    throw error;
+  }
+};
+
